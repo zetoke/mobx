@@ -12,12 +12,14 @@ export function configure(options: {
     isolateGlobalState?: boolean
     disableErrorBoundaries?: boolean
     reactionScheduler?: (f: () => void) => void
+    enableStubbing?: boolean
 }): void {
     const {
         enforceActions,
         computedRequiresReaction,
         disableErrorBoundaries,
-        reactionScheduler
+        reactionScheduler,
+        enableStubbing
     } = options
     if (options.isolateGlobalState === true) {
         isolateGlobalState()
@@ -61,5 +63,9 @@ export function configure(options: {
     }
     if (reactionScheduler) {
         setReactionScheduler(reactionScheduler)
+    }
+
+    if (enableStubbing !== undefined) {
+        globalState.enableStubbing = !!enableStubbing
     }
 }

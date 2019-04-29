@@ -112,6 +112,12 @@ export class MobXGlobals {
      * they are not the cause, see: https://github.com/mobxjs/mobx/issues/1836
      */
     suppressReactionErrors = false
+
+    /*
+     * If true, lets computeds to be configurable to have an ability to mock or spyOn
+     * See https://github.com/mobxjs/mobx/issues/1867
+     */
+    enableStubbing = false
 }
 
 let canMergeGlobalState = true
